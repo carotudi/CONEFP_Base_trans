@@ -1,2 +1,4 @@
-co\edu\sena\pruebabasedatos_sql_local\PruebaBaseDatos_SQL_Local.class
+PruebaBaseDatos_SQL_Local.class
 co\edu\sena\pruebabasedatos_sql_local\conn.class
+co\edu\sena\pruebabasedatos_sql_local\connection.class
+co\edu\sena\pruebabasedatos_sql_local\connetion.class
