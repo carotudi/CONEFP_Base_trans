@@ -1,4 +1,8 @@
+<<<<<<< HEAD
   import java.sql.*;
+=======
+      import java.sql.*;
+>>>>>>> Grey_Mysql
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
@@ -9,19 +13,33 @@ public class PruebaBaseDatos_SQL_Local {
             // Conexión a la base de datos
             Class.forName("com.mysql.cj.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/Transacciones";
+<<<<<<< HEAD
             Connection conexion = DriverManager.getConnection(url, "root", "");
 
             Scanner sc = new Scanner(System.in);
             int opcion;
 
             do {
+=======
+
+            Scanner sc = new Scanner(System.in);
+            int opcion;
+            Connection conexion = null;
+
+            do {
+          
+>>>>>>> Grey_Mysql
                 System.out.println("1. Crear transaccion");
                 System.out.println("2. Listar transacciones");
                 System.out.println("3. Consultar por ID");
                 System.out.println("4. Actualizar transaccion");
                 System.out.println("5. Eliminar transaccion");
                 System.out.println("0. Salir");
+<<<<<<< HEAD
                 System.out.print("Elige una opción: ");
+=======
+                System.out.print("Elige una opcion: ");
+>>>>>>> Grey_Mysql
                 opcion = sc.nextInt();
 
                 switch (opcion) {
@@ -49,9 +67,19 @@ public class PruebaBaseDatos_SQL_Local {
                         listarTransacciones(conexion);
                         break;
 
+<<<<<<< HEAD
                     
 
                     case 3:
+=======
+                    case 3:
+                        System.out.print("ID a consultar: ");
+                        int idConsulta = sc.nextInt();
+                        consultarPorId(conexion, idConsulta);
+                        break;
+
+                    case 4:
+>>>>>>> Grey_Mysql
                         System.out.print("ID a actualizar: ");
                         int idUpdate = sc.nextInt();
                         System.out.print("Nuevo monto: ");
@@ -62,7 +90,11 @@ public class PruebaBaseDatos_SQL_Local {
                         actualizarTransaccion(conexion, idUpdate, nuevoMonto, nuevaDesc);
                         break;
 
+<<<<<<< HEAD
                     case 4:
+=======
+                    case 5:
+>>>>>>> Grey_Mysql
                         System.out.print("ID a eliminar: ");
                         int idDelete = sc.nextInt();
                         eliminarTransaccion(conexion, idDelete);
@@ -73,7 +105,11 @@ public class PruebaBaseDatos_SQL_Local {
                         break;
 
                     default:
+<<<<<<< HEAD
                         System.out.println(" Opcion invalida.");
+=======
+                        System.out.println(" Opción inválida.");
+>>>>>>> Grey_Mysql
                 }
             } while (opcion != 0);
 
@@ -94,7 +130,11 @@ public class PruebaBaseDatos_SQL_Local {
         ps.setString(5, categoria);
         ps.setTimestamp(6, Timestamp.valueOf(fecha));
         ps.executeUpdate();
+<<<<<<< HEAD
         System.out.println("Transacción creada correctamente.");
+=======
+        System.out.println("Transaccion creada correctamente.");
+>>>>>>> Grey_Mysql
     }
 
     // mostrar transacciones 
@@ -107,10 +147,36 @@ public class PruebaBaseDatos_SQL_Local {
             System.out.println("Id: " + rs.getInt("Id") +
                                ", Tipo: " + rs.getString("Tipo") +
                                ", Monto: " + rs.getFloat("Monto") +
+<<<<<<< HEAD
+=======
+                               ", Descripcion: " + rs.getString("Descripcion") +
+                               ", Metodo: " + rs.getString("Metodo_pago") +
+                               ", Categoria: " + rs.getString("Categoria") +
+                               ", Fecha: " + rs.getTimestamp("Fecha"));
+        }
+    }
+
+    //consultar por id de transaccion
+    public static void consultarPorId(Connection conexion, int id) throws SQLException {
+        String sql = "SELECT * FROM info_transacciones WHERE Id = ?";
+        PreparedStatement ps = conexion.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            System.out.println("Id: " + rs.getInt("Id") +
+                               ", Tipo: " + rs.getString("Tipo") +
+                               ", Monto: " + rs.getFloat("Monto") +
+>>>>>>> Grey_Mysql
                                ", Descripción: " + rs.getString("Descripcion") +
                                ", Método: " + rs.getString("Metodo_pago") +
                                ", Categoría: " + rs.getString("Categoria") +
                                ", Fecha: " + rs.getTimestamp("Fecha"));
+<<<<<<< HEAD
+=======
+        } else {
+            System.out.println("️ No se encontro la transacción con id " + id);
+>>>>>>> Grey_Mysql
         }
     }
 
@@ -122,7 +188,11 @@ public class PruebaBaseDatos_SQL_Local {
         ps.setString(2, descripcion);
         ps.setInt(3, id);
         int filas = ps.executeUpdate();
+<<<<<<< HEAD
         System.out.println("Transacciones actualizadas: " + filas);
+=======
+        System.out.println(" Transacciones actualizadas: " + filas);
+>>>>>>> Grey_Mysql
     }
 
     // eliminar transaccion
@@ -131,7 +201,13 @@ public class PruebaBaseDatos_SQL_Local {
         PreparedStatement ps = conexion.prepareStatement(sql);
         ps.setInt(1, id);
         int filas = ps.executeUpdate();
+<<<<<<< HEAD
         System.out.println("Transacciones eliminadas: " + filas);
     }
 }
                          
+=======
+        System.out.println(" Transacciones eliminadas: " + filas);
+    }
+}
+>>>>>>> Grey_Mysql
